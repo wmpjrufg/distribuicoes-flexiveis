@@ -1,31 +1,23 @@
-# Dados e notebooks / Data and notebooks
+# Abrir, enviar o CSV e calcular / Open, upload the CSV and calculate
 
 ## Português
 
-Extraia o pacote completo. Use Python 3.11 e execute, na raiz da pasta extraída:
+1. [Abra o notebook no Colab](https://colab.research.google.com/github/wmpjrufg/distribuicoes-flexiveis/blob/main/notebooks/distribuicoes_flexiveis_pt.ipynb).
+2. Execute as células na ordem.
+3. Na célula de upload, selecione `data/estacao_A001_diario.csv` deste pacote.
 
-```console
-python -m pip install -r requirements-notebooks.txt
-python -m jupyterlab
-```
-
-Abra `notebooks/distribuicoes_flexiveis_pt.ipynb` e execute todas as células na ordem.
-O arquivo de dados fica em `data/estacao_A001_diario.csv`; os resultados são gravados
-em `outputs/pt/`. O bootstrap com reajuste pode levar vários minutos.
-Consulte `data/README.pt.md` para origem, unidades e pendências de documentação.
+Os gráficos e tabelas aparecem no notebook. Não é preciso configurar pastas,
+salvar figuras nem instalar Python localmente. A primeira célula instala o pyglam.
+São comparados os ajustes de vento e temperatura, com uma verificação do suporte.
+Este exemplo curto não executa bootstrap nem reproduz todas as análises do manuscrito.
 
 ## English
 
-Extract the complete package. Use Python 3.11 and run from the extracted root folder:
+1. [Open the notebook in Colab](https://colab.research.google.com/github/wmpjrufg/distribuicoes-flexiveis/blob/main/notebooks/distribuicoes_flexiveis_en.ipynb).
+2. Run the cells in order.
+3. At the upload cell, select `data/estacao_A001_diario.csv` from this package.
 
-```console
-python -m pip install -r requirements-notebooks.txt
-python -m jupyterlab
-```
-
-Open `notebooks/distribuicoes_flexiveis_en.ipynb` and run all cells in order.
-The dataset is `data/estacao_A001_diario.csv`; results go to `outputs/en/`.
-Bootstrap resampling with refitting may take several minutes.
-See `data/README.en.md` for provenance, units and pending documentation.
-
-Site / Website: https://wmpjrufg.github.io/distribuicoes-flexiveis/
+Plots and tables appear in the notebook. No folder configuration, figure export
+or local Python installation is needed. The first cell installs pyglam.
+The examples compare wind and temperature fits and check the wind model's support.
+This short example does not run bootstrap or reproduce every manuscript analysis.

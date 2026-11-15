@@ -1,5 +1,6 @@
 """Validate portable notebook metadata, sources and optional sequential execution."""
 from pathlib import Path
+from types import SimpleNamespace
 import argparse
 import ast
 import contextlib
@@ -28,14 +29,15 @@ for language in ['pt', 'en']:
         assert cell.id == f'cell-{i:02d}', (path,i,'id')
         assert not forbidden.search(json.dumps(cell, ensure_ascii=False)), (path,i,'source marker')
         if cell.cell_type == 'code':
-            ast.parse(cell.source)
+            ast.parse(cell.source.replace('%pip install -q pyglam==1.1.0', ''))
             assert cell.execution_count is None and cell.outputs == [], (path,i,'stored outputs')
     print(f'{language}: {len(book.cells)} cells validated', flush=True)
     if args.execute == language:
         os.environ['MPLBACKEND'] = 'Agg'
         os.environ['MPLCONFIGDIR'] = str(ROOT/'outputs/.matplotlib')
         os.chdir(ROOT/'notebooks')
-        namespace = {'__name__':'__main__'}
+        dataset = ROOT/'data/estacao_A001_diario.csv'
+        namespace = {'__name__':'__main__', 'files':SimpleNamespace(upload=lambda:{dataset.name:dataset.read_bytes()})}
         start = time.monotonic()
         log = io.StringIO()
         for i, cell in enumerate(book.cells):
@@ -43,20 +45,25 @@ for language in ['pt', 'en']:
                 continue
             print(f'{language}: executing cell {i}', flush=True)
             with contextlib.redirect_stdout(log):
-                exec(compile(cell.source, str(path)+f':cell-{i}', 'exec'), namespace)
+                source = cell.source.replace('%pip install -q pyglam==1.1.0', '').replace('from google.colab import files', '')
+                exec(compile(source, str(path)+f':cell-{i}', 'exec'), namespace)
         output = ROOT/'outputs'/language
+        output.mkdir(parents=True, exist_ok=True)
         (output/'execution.txt').write_text(log.getvalue(),encoding='utf-8')
         summary = {
-            'wind_count': int(namespace['v'].size),
-            'july_count': int(namespace['t'].size),
-            'wind_parameters': namespace['sol_v'].x.tolist(),
-            'temperature_parameters': namespace['sol_t'].x.tolist(),
-            'wind_outside_support': int(namespace['fora_v']),
+            'wind_count': int(namespace['wind'].size),
+            'july_count': int(namespace['temperature'].size),
+            'wind_parameters': namespace['fit_wind'].x.tolist(),
+            'temperature_parameters': namespace['fit_temperature'].x.tolist(),
+            'wind_outside_support': int(namespace['outside']),
             'elapsed_seconds': round(time.monotonic()-start,2),
         }
         (output/'execution.json').write_text(json.dumps(summary,indent=2),encoding='utf-8')
         assert summary['wind_count'] == 8840 and summary['july_count'] == 768
         assert summary['wind_outside_support'] == 84
+        import numpy as np
+        np.testing.assert_allclose(summary['wind_parameters'], [2.190728,1.726955,0.555451,0.098706], atol=2e-5)
+        np.testing.assert_allclose(summary['temperature_parameters'], [19.538045,1.070649,0.017493,0.183561], atol=2e-5)
         print(json.dumps(summary), flush=True)
 
 dataset = ROOT/'data/estacao_A001_diario.csv'

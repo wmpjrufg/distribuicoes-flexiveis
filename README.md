@@ -43,3 +43,10 @@ dos dados permanecem identificadas nas fichas em `data/`.
 **[TODO: definir a licença dos textos e do código e confirmar os termos aplicáveis aos dados.]**
 
 Não versione `_build/`, `downloads/` ou `outputs/`; essas pastas estão no `.gitignore`.
+
+
+## Usar os notebooks
+
+Abra no Colab, execute as células e faça upload do CSV. Os gráficos e resultados aparecem no notebook.
+
+[Google Colab](https://colab.research.google.com/github/wmpjrufg/distribuicoes-flexiveis/blob/main/notebooks/distribuicoes_flexiveis_pt.ipynb)

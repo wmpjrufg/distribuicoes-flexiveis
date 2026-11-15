@@ -40,3 +40,10 @@ See `notebooks/README.md` for execution instructions and `data/` for provenance.
 **[TODO: choose text/code licenses and confirm applicable dataset terms.]**
 
 Generated `_build/`, `downloads/` and `outputs/` directories are ignored by Git.
+
+
+## Use the notebooks
+
+Open in Colab, run the cells and upload the CSV. Plots and results appear in the notebook.
+
+[Google Colab](https://colab.research.google.com/github/wmpjrufg/distribuicoes-flexiveis/blob/main/notebooks/distribuicoes_flexiveis_en.ipynb)

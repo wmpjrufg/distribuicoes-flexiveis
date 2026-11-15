@@ -1,34 +1,23 @@
 Downloads
 =========
 
-Meteorological data and notebooks with distribution-fitting examples.
+Run in Google Colab
+--------------------------
 
-.. container:: download-panel
+Open the notebook, run the cells and upload the CSV when prompted.
 
-   :download:`Download the complete package (.zip) <../../downloads/supplementary-materials.zip>`
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/wmpjrufg/distribuicoes-flexiveis/blob/main/notebooks/distribuicoes_flexiveis_en.ipynb
+   :alt: Open in Colab
 
-   Includes the dataset, English and Portuguese notebooks, and execution instructions.
+`Open in Colab <https://colab.research.google.com/github/wmpjrufg/distribuicoes-flexiveis/blob/main/notebooks/distribuicoes_flexiveis_en.ipynb>`_
 
-Individual files
--------------------
+* :download:`Download the dataset (.csv) <../../data/estacao_A001_diario.csv>`
+* :download:`Portuguese notebook <../../notebooks/distribuicoes_flexiveis_pt.ipynb>`
+* :download:`English notebook <../../notebooks/distribuicoes_flexiveis_en.ipynb>`
+* :download:`Complete package (.zip) <../../downloads/supplementary-materials.zip>`
+* :download:`Data sheet <../../data/README.en.md>`
 
-* :download:`Station A001 dataset (.csv) <../../data/estacao_A001_diario.csv>`
-* :download:`English notebook (.ipynb) <../../notebooks/distribuicoes_flexiveis_en.ipynb>`
-* :download:`Portuguese notebook (.ipynb) <../../notebooks/distribuicoes_flexiveis_pt.ipynb>`
-* :download:`Dependencies (.txt) <../../requirements-notebooks.txt>`
-* :download:`Data sheet (.md) <../../data/README.en.md>`
-
-Getting started
-------------------
-
-Extract the package, use Python 3.11 and run from the extracted folder:
-
-.. code-block:: console
-
-   python -m pip install -r requirements-notebooks.txt
-   python -m jupyterlab
-
-Open a notebook in ``notebooks/`` and run its cells in order. For individual
-downloads, place the CSV beside the notebook or in the root ``data/`` folder.
+No local Python installation is needed. The first cell installs pyglam in Colab; plots and tables appear directly in the notebook.
 
 Data source: `INMET / BDMEP <https://bdmep.inmet.gov.br/>`_.
