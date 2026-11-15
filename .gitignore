@@ -5,5 +5,7 @@ __pycache__/
 _build/
 downloads/
 outputs/
+rbef_revisao2/
+rbef_revisao2_en/
 .DS_Store
 Thumbs.db
