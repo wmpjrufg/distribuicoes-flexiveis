@@ -21,7 +21,7 @@ html_copy_source = False
 html_show_sphinx = False
 html_baseurl = os.environ.get('SITE_BASE_URL', 'https://wmpjrufg.github.io/distribuicoes-flexiveis').rstrip('/') + '/' + SITE_LANGUAGE + '/'
 html_context = {'site_language': SITE_LANGUAGE, 'other_language': 'en' if SITE_LANGUAGE=='pt' else 'pt'}
-html_sidebars = {'**':['sidebar/brand.html','language-switch.html','sidebar/search.html','sidebar/scroll-start.html','sidebar/navigation.html','sidebar/scroll-end.html']}
+html_sidebars = {'**':['sidebar/brand.html','language-switch.html','sidebar/scroll-start.html','sidebar/navigation.html','sidebar/scroll-end.html']}
 html_theme_options = {
     'light_css_variables': {
         'color-brand-primary':'#12665e', 'color-brand-content':'#12665e',
@@ -35,3 +35,5 @@ mathjax3_config = {'tex': {'tags':'ams'}}
 nitpicky = True
 smartquotes = False
 
+
+html_use_index = False

@@ -1,33 +1,44 @@
 Distribuições flexíveis
-=======================
+========================
 
-Material de estudo e reprodução do artigo sobre a distribuição lambda generalizada, com exemplos de vento e temperatura.
+Uma breve introdução à distribuição lambda generalizada e materiais para explorar
+dados de vento e temperatura com Python e ``pyGLAM``.
 
 :doc:`Baixar dados e notebooks <downloads>`
 
-Resumo
+A FKML em poucas palavras
+----------------------------
+
+A distribuição lambda generalizada, na parametrização FKML, permite representar
+formas simétricas ou assimétricas, com caudas limitadas ou não. Ela é definida pela
+função quantil: para uma probabilidade :math:`u`, :math:`Q(u)` fornece o valor abaixo
+do qual está essa fração da distribuição. Por exemplo, :math:`Q(0{,}5)` é a mediana.
+
+.. math::
+
+   Q(u)=\lambda_1+\frac{1}{\lambda_2}
+   \left[\frac{u^{\lambda_3}-1}{\lambda_3}
+   -\frac{(1-u)^{\lambda_4}-1}{\lambda_4}\right],
+   \qquad 0<u<1,\quad\lambda_2>0.
+
+* :math:`\lambda_1` desloca a distribuição.
+* :math:`\lambda_2` controla a escala inversamente: aumentá-lo reduz a dispersão.
+* :math:`\lambda_3` e :math:`\lambda_4` controlam a forma, principalmente nos lados
+  esquerdo e direito, respectivamente.
+
+Quando um parâmetro de forma é zero, a fração correspondente é substituída pelo
+limite logarítmico. O ajuste pode ser feito pelo método dos momentos, como nos
+notebooks. Além da concordância com os dados, é necessário verificar se o suporte
+do modelo é adequado à grandeza física e às observações.
+
+Artigo
 --------
 
-A distribuição normal ocupa posição central em muitos cursos introdutórios de tratamento de dados, embora muitas delas sejam assimétricas ou limitadas. Este artigo apresenta uma abordagem didática para a modelagem probabilística de dados físicos reais com a distribuição lambda generalizada, na parametrização FKML, definida por uma função quantil explícita. Explica-se o significado dos quatro parâmetros, as condições de validade e de suporte e o ajuste pelo método dos momentos, implementado na biblioteca Python ``pyglam``. O procedimento é aplicado a dois conjuntos de dados de uma estação meteorológica automática do INMET em Brasília, que são a velocidade média diária do vento, comparada às distribuições de Rayleigh e de Weibull, e a temperatura média diária de julho, comparada à distribuição normal. A avaliação usa a distância de Kolmogorov-Smirnov e os desvios de quantis nas unidades da grandeza, interpretados à luz da resolução das medições e da incerteza amostral. No vento, a distribuição flexível tem os menores desvios nos quantis examinados, da mesma ordem da variabilidade estimada por reamostragem, mas seu suporte exclui 0,95% dos dias, justamente os de vento mais fraco. Na temperatura, as discrepâncias da normal são menores que a variabilidade amostral dos quantis, e o modelo de dois parâmetros continua sendo uma escolha razoável para essa descrição. Os exemplos mostram que um bom ajuste exige examinar o suporte e a aderência, e não apenas os momentos, e que a escolha do modelo depende da pergunta física. Todos os resultados são reproduzidos por um notebook disponibilizado com o artigo, e uma sugestão de roteiro para uso em sala, com tarefas e respostas esperadas, acompanha o texto.
+O artigo será disponibilizado aqui após a publicação.
 
-Autoria
---------
-
-Renata Maria Pensin · Wanderlei Malaquias Pereira Junior · Victor Hugo Moreira do Couto Souza · Marcos Luiz Henrique
-
-Texto completo e materiais
----------------------------
+.. TODO: adicionar a referência e o link do artigo somente após a publicação.
 
 .. toctree::
-   :maxdepth: 2
+   :hidden:
 
-   introduction
-   distribution
-   data
-   wind
-   temperature
-   classroom
-   conclusions
    downloads
-   data-notes
-   references

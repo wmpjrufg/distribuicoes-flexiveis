@@ -1,33 +1,45 @@
 Flexible distributions
-======================
+========================
 
-Study and reproduction materials for the paper on the generalized lambda distribution, with wind and temperature examples.
+A brief introduction to the generalized lambda distribution and materials for
+exploring wind and temperature data with Python and ``pyGLAM``.
 
 :doc:`Download data and notebooks <downloads>`
 
-Abstract
+FKML in a nutshell
+---------------------
+
+The generalized lambda distribution, in the FKML parameterization, can represent
+symmetric or asymmetric shapes with bounded or unbounded tails. It is defined by
+its quantile function: for a probability :math:`u`, :math:`Q(u)` gives the value
+below which that fraction of the distribution lies. For example, :math:`Q(0.5)` is
+the median.
+
+.. math::
+
+   Q(u)=\lambda_1+\frac{1}{\lambda_2}
+   \left[\frac{u^{\lambda_3}-1}{\lambda_3}
+   -\frac{(1-u)^{\lambda_4}-1}{\lambda_4}\right],
+   \qquad 0<u<1,\quad\lambda_2>0.
+
+* :math:`\lambda_1` shifts the distribution.
+* :math:`\lambda_2` inversely controls scale: increasing it reduces dispersion.
+* :math:`\lambda_3` and :math:`\lambda_4` control shape, mainly on the left and
+  right sides, respectively.
+
+When a shape parameter is zero, the corresponding fraction is replaced by its
+logarithmic limit. Parameters can be fitted by the method of moments, as in the
+notebooks. Besides agreement with the data, the model's support must be checked
+against the physical quantity and the observations.
+
+Paper
 --------
 
-The normal distribution holds a central place in many introductory data-analysis courses, although many physical quantities are skewed or bounded. This paper presents a pedagogical approach to the probabilistic modeling of real physical data with the generalized lambda distribution (GLD), in the FKML parameterization, which is defined by an explicit quantile function. It explains the meaning of the four parameters, the conditions of validity and support, and the fit by the method of moments, implemented in the Python library ``pyglam``. The procedure is applied to two data sets from an automatic weather station of the Brazilian National Institute of Meteorology (INMET) in Brasília, namely the daily mean wind speed, compared with the Rayleigh and Weibull distributions, and the daily mean temperature in July, compared with the normal distribution. The assessment uses the Kolmogorov-Smirnov distance and quantile deviations in the units of the measured quantity, interpreted in light of the measurement resolution and the sampling uncertainty. For wind, the flexible distribution gives the smallest deviations at the quantiles examined, of the same order as the variability estimated by resampling, but its support excludes 0.95% of the days, precisely the calmest ones. For temperature, the deviations of the normal distribution are smaller than the sampling variability of the quantiles, and the two-parameter model remains a reasonable choice for this description. The examples show that a good fit requires examining the support and the goodness of fit, not only the moments, and that the choice of model depends on the physical question. All results are reproduced by a notebook provided with the paper, and a suggested classroom sequence, with tasks and expected answers, accompanies the text.
+The paper will be made available here after publication.
 
-Authors
---------
-
-Renata Maria Pensin · Wanderlei Malaquias Pereira Junior · Victor Hugo Moreira do Couto Souza · Marcos Luiz Henrique
-
-Full text and materials
----------------------------
+.. TODO: add the paper citation and link only after publication.
 
 .. toctree::
-   :maxdepth: 2
+   :hidden:
 
-   introduction
-   distribution
-   data
-   wind
-   temperature
-   classroom
-   conclusions
    downloads
-   data-notes
-   references

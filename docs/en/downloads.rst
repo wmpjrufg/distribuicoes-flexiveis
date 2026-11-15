@@ -1,53 +1,34 @@
 Downloads
 =========
 
-The data and notebooks reproduce the wind and temperature case studies in the paper.
+Meteorological data and notebooks with distribution-fitting examples.
 
 .. container:: download-panel
 
-   **Complete package**
+   :download:`Download the complete package (.zip) <../../downloads/supplementary-materials.zip>`
 
-   :download:`Download the data, both notebooks and instructions (.zip) <../../downloads/supplementary-materials.zip>`
-
-   Extract the archive before opening the notebooks. Its folder structure is ready for execution.
+   Includes the dataset, English and Portuguese notebooks, and execution instructions.
 
 Individual files
-----------------
+-------------------
 
-* :download:`Dataset — station A001, daily means (.csv) <../../data/estacao_A001_diario.csv>`
+* :download:`Station A001 dataset (.csv) <../../data/estacao_A001_diario.csv>`
 * :download:`English notebook (.ipynb) <../../notebooks/distribuicoes_flexiveis_en.ipynb>`
 * :download:`Portuguese notebook (.ipynb) <../../notebooks/distribuicoes_flexiveis_pt.ipynb>`
-* :download:`Execution dependencies (.txt) <../../requirements-notebooks.txt>`
-* :download:`English data sheet (.md) <../../data/README.en.md>`
-* :download:`Portuguese data sheet (.md) <../../data/README.pt.md>`
-* :download:`Dataset SHA-256 checksum <../../data/SHA256SUMS>`
+* :download:`Dependencies (.txt) <../../requirements-notebooks.txt>`
+* :download:`Data sheet (.md) <../../data/README.en.md>`
 
-How to run
-----------
+Getting started
+------------------
 
-Use Python 3.11. From the extracted folder's root, install the dependencies and launch Jupyter:
+Extract the package, use Python 3.11 and run from the extracted folder:
 
 .. code-block:: console
 
    python -m pip install -r requirements-notebooks.txt
    python -m jupyterlab
 
-Open the desired notebook in ``notebooks/`` and run all cells in order.
-Results are written to ``outputs/en/`` or ``outputs/pt/``. Bootstrap resampling
-with model refitting may take several minutes. Publishing the site does not
-execute the notebooks; readers run them locally.
+Open a notebook in ``notebooks/`` and run its cells in order. For individual
+downloads, place the CSV beside the notebook or in the root ``data/`` folder.
 
-If downloading files individually, place the CSV beside the notebook
-or in the project's root ``data/`` folder.
-
-Source and citation
--------------------
-
-The meteorological data come from `INMET / BDMEP <https://bdmep.inmet.gov.br/>`_.
-The :doc:`data sheet <data-notes>` records the units, period and provenance details
-that still require confirmation by the authors.
-
-**[TODO: final bibliographic reference and paper DOI after publication.]**
-
-**[TODO: choose licenses for the code and text and confirm the INMET data redistribution terms.]**
-
+Data source: `INMET / BDMEP <https://bdmep.inmet.gov.br/>`_.

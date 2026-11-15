@@ -6,6 +6,7 @@ import subprocess
 import sys
 import zipfile
 import os
+import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILD = ROOT/'_build/html'
@@ -13,6 +14,11 @@ BUILD = ROOT/'_build/html'
 def run(*args):
     subprocess.run([sys.executable,'-X','utf8',*args],cwd=ROOT,check=True,env={**os.environ,'PYTHONUTF8':'1'})
 
+# A clean output prevents removed manuscript chapters from remaining public.
+assert BUILD.resolve() == (ROOT.resolve()/'_build'/'html'), 'Unexpected build path'
+assert not BUILD.is_symlink(), 'Build directory must not be a symlink'
+if BUILD.exists():
+    shutil.rmtree(BUILD)
 run('tools/check_notebooks.py')
 pages = {lang:{p.stem for p in (ROOT/'docs'/lang).iterdir() if p.suffix in {'.rst','.md'}} for lang in ['pt','en']}
 assert pages['pt']==pages['en'], 'Language page structures differ'
@@ -50,7 +56,7 @@ a:focus-visible{outline:3px solid #b46e18;outline-offset:5px}a:hover{background:
 <p>Do modelo aos dados: vento, temperatura e a interpretação física de um ajuste.</p>
 <p lang="en">From models to data: wind, temperature and the physical interpretation of a fit.</p>
 <nav aria-label="Idioma / Language"><a href="pt/index.html" lang="pt-BR">Português →</a><a href="en/index.html" lang="en">English →</a></nav>
-<footer>Dados · Notebooks · Texto do artigo<br><span lang="en">Data · Notebooks · Paper text</span></footer>
+<footer>Introdução · FKML · Downloads<br><span lang="en">Introduction · FKML · Downloads</span></footer>
 </main></body></html>''',encoding='utf-8')
 
 class Links(HTMLParser):
